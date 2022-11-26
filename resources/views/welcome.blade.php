@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Kalimasa</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <h5 class="title" id="second-line">You can only do better in the future</h5>    
                 </div>
 
-                <div class="time-wrapp flex mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="width: fit-content;justify-content: center !important;align-items:center;">
+                <div class="time-wrapp flex mt-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" style="width: 100%;justify-content:center;">
                     {{-- <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
