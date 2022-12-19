@@ -104,5 +104,6 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/time.js') }}"></script>
     </body>
 </html>
