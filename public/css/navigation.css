@@ -1,0 +1,12 @@
+.spacial-nav {
+    position: fixed !important;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+button {
+    align-self: flex-end;
+}
