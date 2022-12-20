@@ -13,10 +13,16 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    {{-- Style --}}
+    <link rel="stylesheet" href="{{ asset('css/preloader_style.css') }}">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    <div class="preloader">
+        <div class="counter">0</div>
+    </div>  
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -76,5 +82,7 @@
             @yield('content')
         </main>
     </div>
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="{{ asset('js/preloader.js') }}"></script>
+    </body>
 </html>
