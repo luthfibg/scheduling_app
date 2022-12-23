@@ -6,7 +6,7 @@
     <div class="row justify-content-center px-md-5 mb-3">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('New Task') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,52 +16,38 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    @include('common.errors')
+
+                    <form action="{{ route('tasks.save') }}" method="POST" class="mt-3 form-inline needs-validation" novalidate>
+                        <div class="col-12">
+                            <label for="input_task" class="col-3 form-label mb-2">Task Name</label>
+                            <div class="col-12 col-md-6 mb-2">
+                                <input type="text" name="taskname" class="form-control" id="input_task" required>
+                                <div class="invalid-feedback">
+                                    Please provide the task name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <div class="col-sm-offset-3 col-6">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                {{-- <div class="card-footer">
+                    2022
+                </div> --}}
             </div>
         </div>
     </div>
     <div class="row row-cols-3 px-md-5 mb-3">
-        <div class="col-12 col-md-4">
-            <div class="card" style="width: 18rem;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">{{ __('Tasks') }}</div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    {{ __('Task 1') }}
                 </div>
             </div>
         </div>
