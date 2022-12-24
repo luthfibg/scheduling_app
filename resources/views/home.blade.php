@@ -67,9 +67,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($tasks as $task)
-                                    <td class="table-text">
-                                        <div>{{ $task->name }}</div>
-                                    </td>
+                                    <tr>
+                                        <td class="table-text">
+                                            <div>{{ $task->name }}</div>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

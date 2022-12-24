@@ -24,9 +24,11 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $task)
     {
-        //
+        return Task::create([
+            'name' => $task['name'],
+        ]);
     }
 
     /**
@@ -37,8 +39,13 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
+        // $request->validate([
+        //     'taskname' => 'required|max:255',
+        // ]);
+
+        // Task::create($request->post());
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'taskname' => 'required|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -48,8 +55,10 @@ class TaskController extends Controller
         $task = new Task;
         $task->name = $request->taskname;
         $task->save();
+        // $check = $this->create($task);
+        // $check->save();
 
-        return redirect('/home');
+        return redirect()->intended('home')->with('success', 'Task saved');
     }
 
     /**
@@ -62,9 +71,7 @@ class TaskController extends Controller
     {
         $tasks = Task::orderBy('created_at', 'asc')->get();
 
-        return view('home', [
-            'tasks' => $tasks,
-        ]);
+        return view('home',compact('tasks'));
     }
 
     /**
