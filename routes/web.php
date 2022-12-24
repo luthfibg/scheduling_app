@@ -23,8 +23,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(TaskController::class)->group(function() {
-    Route::get('task', 'create')->name('tasks.add');
-    Route::post('task', 'store')->name('tasks.save');
-    Route::put('task', 'edit')->name('tasks.edit');
-    Route::delete('task', 'destroy')->name('tasks.delete');
+    Route::get('home', 'create')->name('tasks.add');
+    Route::get('home', 'show')->name('tasks.current');
+    Route::post('home', 'store')->name('tasks.save');
+    Route::put('home', 'edit')->name('tasks.edit');
+    Route::delete('home', 'destroy')->name('tasks.delete');
 });

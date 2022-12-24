@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
@@ -47,6 +48,8 @@ class TaskController extends Controller
         $task = new Task;
         $task->name = $request->taskname;
         $task->save();
+
+        return redirect('/home');
     }
 
     /**
@@ -57,7 +60,11 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('home', [
+            'tasks' => $tasks,
+        ]);
     }
 
     /**
