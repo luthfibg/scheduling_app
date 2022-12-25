@@ -26,6 +26,7 @@ Route::controller(TaskController::class)->group(function() {
     Route::get('home', 'create')->name('tasks.add');
     Route::get('home', 'show')->name('tasks.current');
     Route::post('home', 'store')->name('tasks.save');
-    Route::put('home', 'edit')->name('tasks.edit');
+    Route::get('home/{task}', 'edit')->name('tasks.edit');
+    Route::put('home/{task}', 'update')->name('tasks.update');
     Route::delete('home/{task}', 'destroy')->name('tasks.delete');
 });
