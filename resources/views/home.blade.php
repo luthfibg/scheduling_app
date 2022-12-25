@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/preloader_style.css') }}">
 <div class="container">
     <div class="row justify-content-center px-md-5 mb-3">
         <div class="col-12">
@@ -20,11 +19,27 @@
                     <form action="{{ route('tasks.save') }}" method="POST" class="mt-3 form-inline needs-validation" novalidate>
                         @csrf
                         <div class="col-12">
-                            <label for="input_task" class="col-3 form-label mb-2">Task Name</label>
+                            <label for="input_task" class="col-12 form-label mb-2">Task Name</label>
                             <div class="col-12 col-md-6 mb-2">
                                 <input type="text" name="taskname" class="form-control" id="input_task">
                                 <div class="invalid-feedback">
                                     Please provide the task name
+                                </div>
+                            </div>
+                            <label for="input_task" class="col-12 form-label mb-2">Description</label>
+                            <div class="col-12 col-md-6 mb-2">
+                                <input type="text" name="description" class="form-control" id="input_desc">
+                                <div class="invalid-feedback">
+                                    Please type description for task
+                                </div>
+                            </div>
+                            <label for="input_task" class="col-12 form-label mb-2">Deadline</label>
+                            <div class="col-12 col-md-6 mb-2">
+                                <div class="input-group date" id="datepicker">
+                                    <input type="date" name="date" class="form-control" id="input_date">
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please pick a date to specify the deadline
                                 </div>
                             </div>
                         </div>
