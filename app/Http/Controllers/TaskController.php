@@ -82,7 +82,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('modals.edit_task', compact('task'));
     }
 
     /**
@@ -94,7 +94,7 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        return redirect()->intended('home')->withSuccess(__('Task updated'));
     }
 
     /**
@@ -105,6 +105,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->intended('home')->withSuccess(__('Task deleted'));
     }
 }
