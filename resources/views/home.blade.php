@@ -90,11 +90,11 @@
                     <div class="card-header">
                         Current Tasks
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table class="table table-striped task-table">
                             <thead>
-                                <th>Task</th>
-                                <th>&nbsp;</th>
+                                <th class="th-lg">Task</th>
+                                <th style="width: 20%">&nbsp;</th>
                             </thead>
                             <tbody>
                                 @foreach ($tasks as $task)
@@ -107,7 +107,7 @@
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-trash"></i> Delete
+                                                    <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
                                         </td>
