@@ -46,7 +46,7 @@
                         @include('common.errors')
                         <div class="form-group mt-3">
                             <div class="col-sm-offset-3 col-6">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
                             </div>
                         </div>
                     </form>
@@ -67,6 +67,22 @@
             </div>
         </div>
     </div> --}}
+    @if(Session::get('success', false))
+        <?php $data = Session::get('success'); ?>
+        @if (is_array($data))
+            @foreach ($data as $msg)
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check"></i>
+                    {{ $msg }}
+                </div>
+            @endforeach
+        @else
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check"></i>
+                {{ $data }}
+            </div>
+        @endif
+    @endif
     <div class="row justify-content-center px-md-5 mb 3">
         <div class="col-12">
             @if ($tasks->count() > 0)
@@ -85,6 +101,15 @@
                                     <tr>
                                         <td class="table-text">
                                             <div>{{ $task->name }}</div>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('tasks.delete', $task->id) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash"></i> Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

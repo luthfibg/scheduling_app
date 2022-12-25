@@ -27,5 +27,5 @@ Route::controller(TaskController::class)->group(function() {
     Route::get('home', 'show')->name('tasks.current');
     Route::post('home', 'store')->name('tasks.save');
     Route::put('home', 'edit')->name('tasks.edit');
-    Route::delete('home', 'destroy')->name('tasks.delete');
+    Route::delete('home/{task}', 'destroy')->name('tasks.delete');
 });
