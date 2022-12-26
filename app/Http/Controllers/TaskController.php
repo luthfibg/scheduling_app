@@ -92,8 +92,10 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request, $id)
     {
+        $task = Task::find($id);
+        $task->update($request->except(['_token', 'submit']));
         return redirect()->intended('home')->withSuccess(__('Task updated'));
     }
 
