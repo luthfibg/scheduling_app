@@ -104,10 +104,10 @@
                                             <div>{{ $task->name }}</div>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal">
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal{{ $task->id }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="editTaskModal{{ $task->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header text-center">
@@ -128,7 +128,11 @@
                                                             </div> --}}
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
-                                                            <button class="btn btn-success btn-sm">Update</button>
+                                                            <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+                                                                @method('UPDATE')
+                                                                @csrf
+                                                                <button class="btn btn-success btn-sm">Update</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

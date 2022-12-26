@@ -94,6 +94,7 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
+        // $task = Task::findOrFail($id);
         return redirect()->intended('home')->withSuccess(__('Task updated'));
     }
 
