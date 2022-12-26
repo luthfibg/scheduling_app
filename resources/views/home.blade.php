@@ -130,7 +130,7 @@
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
                                                             <form action="{{ route('tasks.update', $task->id) }}" method="POST">
-                                                                @method('UPDATE')
+                                                                @method('PUT')
                                                                 @csrf
                                                                 <button class="btn btn-success btn-sm">&nbsp;&nbsp;Update&nbsp;&nbsp;</button>
                                                             </form>

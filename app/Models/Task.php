@@ -18,7 +18,7 @@ class Task extends Model
         // 'status',
     ];
 
-    public function TaskDetails() {
-        return $this->hasMany(TaskDetails::class, 'id', 'id');
-    }
+    // public function TaskDetails() {
+    //     return $this->hasMany(TaskDetails::class, 'id', 'id');
+    // }
 }
