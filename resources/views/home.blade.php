@@ -4,37 +4,38 @@
 <div class="container">
     <div class="row justify-content-center px-md-5 mb-3">
         <div class="col-12">
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
+            <div class="alert alert-success" role="alert">
+                <i class="fa fa-check"></i>
+                {{ __(' You are logged in!') }}
+            </div>
             <div class="card">
                 <div class="card-header">{{ __('New Task') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-
+                <div class="card-body">                       
                     <form action="{{ route('tasks.save') }}" method="POST" class="mt-3 form-inline needs-validation" novalidate>
                         @csrf
                         <div class="col-12">
-                            <label for="input_task" class="col-12 form-label mb-2">Task Name</label>
-                            <div class="col-12 col-md-6 mb-2">
-                                <input type="text" name="taskname" class="form-control" id="input_task">
+                            {{-- <label for="input_task" class="col-12 form-label mb-2 hidden">Task Name</label> --}}
+                            <div class="col-12 col-md-8 col-lg-6 mb-3">
+                                <input type="text" name="taskname" class="form-control" id="input_task" placeholder="Task Name" autocomplete="off">
                                 <div class="invalid-feedback">
                                     Please provide the task name
                                 </div>
                             </div>
-                            <label for="input_task" class="col-12 form-label mb-2">Description</label>
-                            <div class="col-12 col-md-6 mb-2">
-                                <input type="text" name="description" class="form-control" id="input_desc">
+                            {{-- <label for="input_task" class="col-12 form-label mb-2 hidden">Description</label> --}}
+                            <div class="col-12 col-md-8 col-lg-6 mb-2">
+                                <input type="text" name="description" class="form-control" id="input_desc" placeholder="Description" autocomplete="off">
                                 <div class="invalid-feedback">
                                     Please type description for task
                                 </div>
                             </div>
-                            <label for="input_task" class="col-12 form-label mb-2">Deadline</label>
-                            <div class="col-12 col-md-6 mb-2">
+                            <label for="input_task" class="col-12 form-label">Deadline</label>
+                            <div class="col-12 col-md-8 col-lg-6 mb-2">
                                 <div class="input-group date" id="datepicker">
                                     <input type="date" name="date" class="form-control" id="input_date">
                                 </div>
@@ -46,7 +47,7 @@
                         @include('common.errors')
                         <div class="form-group mt-3">
                             <div class="col-sm-offset-3 col-6">
-                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                <button type="submit" class="btn btn-primary btn-sm">&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </form>
@@ -93,9 +94,9 @@
                     <div class="card-body table-responsive">
                         <table class="table table-striped task-table">
                             <thead>
-                                <th class="th-lg">Task</th>
-                                <th style="width: 10%">&nbsp;</th>
-                                <th style="width: 10%">&nbsp;</th>
+                                <th class="th-lg th-first">Task</th>
+                                <th style="width: 10%" class="th-second">&nbsp;</th>
+                                <th style="width: 10%" class="th-third">&nbsp;</th>
                             </thead>
                             <tbody>
                                 @foreach ($tasks as $task)
@@ -118,7 +119,7 @@
                                                         </div>
                                                         <div class="modal-body mx-3">
                                                             <div class="md-form mb-5">
-                                                                <label data-error="wrong" data-success="right" for="edit_task">New Task Name</label>
+                                                                <label data-error="wrong" data-success="right" for="edit_task" class="mb-2">New Task Name</label>
                                                                 <input type="text" id="edit_task" class="form-control validate" name="edit_task" value="{{ $task->name }}">
                                                             </div>
                                                             {{-- <div class="md-form mb-4">
@@ -131,7 +132,7 @@
                                                             <form action="{{ route('tasks.update', $task->id) }}" method="POST">
                                                                 @method('UPDATE')
                                                                 @csrf
-                                                                <button class="btn btn-success btn-sm">Update</button>
+                                                                <button class="btn btn-success btn-sm">&nbsp;&nbsp;Update&nbsp;&nbsp;</button>
                                                             </form>
                                                         </div>
                                                     </div>
