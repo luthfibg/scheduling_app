@@ -24,50 +24,38 @@
                             <div class="col-12 col-md-8 col-lg-6 mb-3">
                                 <input type="text" name="taskname" class="form-control" id="input_task" placeholder="Task Name" autocomplete="off">
                                 <div class="invalid-feedback">
-                                    Please provide the task name
+                                    {{ __('Please provide the task name') }}
                                 </div>
                             </div>
                             {{-- <label for="input_task" class="col-12 form-label mb-2 hidden">Description</label> --}}
                             <div class="col-12 col-md-8 col-lg-6 mb-2">
                                 <input type="text" name="description" class="form-control" id="input_desc" placeholder="Description" autocomplete="off">
                                 <div class="invalid-feedback">
-                                    Please type description for task
+                                    {{ __('Please type description for task') }}
                                 </div>
                             </div>
-                            <label for="input_task" class="col-12 form-label">Deadline</label>
+                            <label for="input_task" class="col-12 form-label">{{ __('Deadline') }}</label>
                             <div class="col-12 col-md-8 col-lg-6 mb-2">
                                 <div class="input-group date" id="datepicker">
                                     <input type="date" name="date" class="form-control" id="input_date">
                                 </div>
                                 <div class="invalid-feedback">
-                                    Please pick a date to specify the deadline
+                                    {{ __('Please pick a date to specify the deadline') }}
                                 </div>
                             </div>
                         </div>
                         @include('common.errors')
                         <div class="form-group mt-3">
                             <div class="col-sm-offset-3 col-6">
-                                <button type="submit" class="btn btn-primary btn-sm">&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                <button type="submit" class="btn btn-primary btn-sm">&nbsp;&nbsp;&nbsp;&nbsp;{{ __('Save') }}&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                {{-- <div class="card-footer">
-                    2022
-                </div> --}}
             </div>
         </div>
     </div>
-    {{-- <div class="row row-cols-3 px-md-5 mb-3">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">{{ __('Tasks') }}</div>
-                <div class="card-body">
-                    {{ __('Task 1') }}
-                </div>
-            </div>
-        </div>
-    </div> --}}
+
     <div class="row justify-content-center px-md-5">
         <div class="col-12">
             @if(Session::get('success', false))
@@ -93,7 +81,7 @@
             @if ($tasks->count() > 0)
                 <div class="card">
                     <div class="card-header">
-                        Current Tasks
+                        {{ __('Current Task') }}
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-striped task-table">
@@ -116,27 +104,22 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header text-center">
-                                                            <h4 class="modal-title w-100 font-weight-bold">Edit Task</h4>
+                                                            <h4 class="modal-title w-100 font-weight-bold">{{ __('Edit Task') }}</h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                                 {{-- <span aria-hidden="true">&times;</span> --}}
                                                             </button>
                                                         </div>
                                                         <div class="modal-body mx-3">
                                                             <div class="md-form mb-5">
-                                                                <label data-error="wrong" data-success="right" for="edit_task" class="mb-2">New Task Name</label>
+                                                                <label data-error="wrong" data-success="right" for="edit_task" class="mb-2">{{ __('New Task Name') }}</label>
                                                                 <input type="text" id="edit_task" class="form-control validate" name="edit_task" value="{{ $task->name }}">
                                                             </div>
-                                                            {{-- <div class="md-form mb-4">
-                                                                <i class="fas fa-lock prefix grey-text"></i>
-                                                                <input type="password" id="defaultForm-pass" class="form-control validate">
-                                                                <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-                                                            </div> --}}
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">
                                                             <form action="{{ route('tasks.update', $task->id) }}" method="POST">
                                                                 @method('PUT')
                                                                 @csrf
-                                                                <button class="btn btn-success btn-sm">&nbsp;&nbsp;Update&nbsp;&nbsp;</button>
+                                                                <button class="btn btn-success btn-sm">&nbsp;&nbsp;{{ __('Update') }}&nbsp;&nbsp;</button>
                                                             </form>
                                                         </div>
                                                     </div>
