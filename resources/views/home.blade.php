@@ -97,10 +97,10 @@
                                             <div>{{ $task->name }}</div>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal{{ $task->id }}">
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal-{{ $task->id }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <div class="modal fade" id="editTaskModal{{ $task->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="editTaskModal-{{ $task->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header text-center">
@@ -111,8 +111,8 @@
                                                         </div>
                                                         <div class="modal-body mx-3">
                                                             <div class="md-form mb-5">
-                                                                <label data-error="wrong" data-success="right" for="edit_task" class="mb-2">{{ __('New Task Name') }}</label>
-                                                                <input type="text" id="edit_task" class="form-control validate" name="edit_task" value="{{ $task->name }}">
+                                                                <label data-error="wrong" data-success="right" for="edit-task" class="mb-2">{{ __('New Task Name') }}</label>
+                                                                <input type="text" id="edit-task" class="form-control validate" name="task_name_edit" value="{{ $task->name }}">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center">

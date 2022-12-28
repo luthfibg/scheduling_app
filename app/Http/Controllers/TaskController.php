@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +27,7 @@ class TaskController extends Controller
      */
     public function create(array $task)
     {
-        return Task::create([
+        return Task::create($request->all() + [
             'name' => $task['name'],
         ]);
     }
@@ -54,6 +55,7 @@ class TaskController extends Controller
 
         $task = new Task;
         $task->name = $request->taskname;
+        $request->merge(['name' => $task->name]);
         $task->save();
         // $check = $this->create($task);
         // $check->save();
@@ -92,15 +94,16 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTaskRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        dd($request->all());
         $task = Task::findOrFail($id);
-        $task->update($request->all());
+        $task->name = $request->task_name_edit;
         $task->save();
         // $task->update([
         //     'name' => $request->edit_task,
         // ]);
-        return redirect()->intended('home')->withSuccess(__('Task updated'));
+        return redirect()->intended('home')->withSuccess(__('Task Updated'));
     }
 
     /**
