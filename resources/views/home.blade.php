@@ -68,23 +68,27 @@
             </div>
         </div>
     </div> --}}
-    @if(Session::get('success', false))
-        <?php $data = Session::get('success'); ?>
-        @if (is_array($data))
-            @foreach ($data as $msg)
-                <div class="alert alert-success" role="alert">
-                    <i class="fa fa-check"></i>
-                    {{ $msg }}
-                </div>
-            @endforeach
-        @else
-            <div class="alert alert-success" role="alert">
-                <i class="fa fa-check"></i>
-                {{ $data }}
-            </div>
-        @endif
-    @endif
-    <div class="row justify-content-center px-md-5 mb 3">
+    <div class="row justify-content-center px-md-5">
+        <div class="col-12">
+            @if(Session::get('success', false))
+                <?php $data = Session::get('success'); ?>
+                @if (is_array($data))
+                    @foreach ($data as $msg)
+                        <div class="alert alert-success" role="alert">
+                            <i class="fa fa-check"></i>
+                            {{ $msg }}
+                        </div>
+                    @endforeach
+                @else
+                    <div class="alert alert-success" role="alert">
+                        <i class="fa fa-check"></i>
+                        {{ $data }}
+                    </div>
+                @endif
+            @endif
+        </div>
+    </div>    
+    <div class="row justify-content-center px-md-5 mb-3">
         <div class="col-12">
             @if ($tasks->count() > 0)
                 <div class="card">
