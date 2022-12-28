@@ -94,8 +94,12 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, $id)
     {
-        $task = Task::find($id);
-        $task->update($request->except(['_token', 'submit']));
+        $task = Task::findOrFail($id);
+        $task->update($request->all());
+        $task->save();
+        // $task->update([
+        //     'name' => $request->edit_task,
+        // ]);
         return redirect()->intended('home')->withSuccess(__('Task updated'));
     }
 
