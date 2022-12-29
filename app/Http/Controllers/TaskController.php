@@ -40,12 +40,8 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        // $request->validate([
-        //     'taskname' => 'required|max:255',
-        // ]);
-
-        // Task::create($request->post());
         // dd($request->all());
+        
         $validator = Validator::make($request->all(), [
             'taskname' => 'required|max:255',
         ]);
@@ -58,8 +54,6 @@ class TaskController extends Controller
         $task->name = $request->taskname;
         $request->merge(['name' => $task->name]);
         $task->save();
-        // $check = $this->create($task);
-        // $check->save();
 
         return redirect()->intended('home')->with('success', 'Task saved');
     }
@@ -101,9 +95,7 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->name = $request->taskedit;
         $task->save();
-        // $task->update([
-        //     'name' => $request->edit_task,
-        // ]);
+
         return redirect()->intended('home')->withSuccess(__('Task Updated'));
     }
 

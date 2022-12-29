@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('user.validated');
 
 Route::controller(TaskController::class)->group(function() {
     Route::get('home', 'create')->name('tasks.add');
