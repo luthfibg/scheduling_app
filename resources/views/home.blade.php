@@ -97,10 +97,10 @@
                                             <div>{{ $task->name }}</div>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal{{ $task->id }}">
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal-{{ $task->id }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <div class="modal fade" id="editTaskModal{{ $task->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="editTaskModal-{{ $task->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header text-center">
@@ -109,19 +109,19 @@
                                                                 {{-- <span aria-hidden="true">&times;</span> --}}
                                                             </button>
                                                         </div>
-                                                        <div class="modal-body mx-3">
-                                                            <div class="md-form mb-5">
-                                                                <label data-error="wrong" data-success="right" for="edit_task" class="mb-2">{{ __('New Task Name') }}</label>
-                                                                <input type="text" id="edit_task" class="form-control validate" name="edit_task" value="{{ $task->name }}">
+                                                        <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+                                                            @method('PUT')
+                                                            @csrf
+                                                            <div class="modal-body mx-3">
+                                                                <div class="md-form mb-5">
+                                                                    <label data-error="wrong" data-success="right" for="taskedit" class="mb-2">{{ __('New Task Name') }}</label>
+                                                                    <input type="text" id="taskedit" class="form-control validate" name="taskedit" value="{{ $task->name }}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer d-flex justify-content-center">
-                                                            <form action="{{ route('tasks.update', $task->id) }}" method="POST">
-                                                                @method('PUT')
-                                                                @csrf
+                                                            <div class="modal-footer d-flex justify-content-center">
                                                                 <button class="btn btn-success btn-sm">&nbsp;&nbsp;{{ __('Update') }}&nbsp;&nbsp;</button>
-                                                            </form>
-                                                        </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

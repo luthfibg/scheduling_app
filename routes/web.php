@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +21,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::controller(TaskController::class)->group(function() {
     Route::get('home', 'create')->name('tasks.add');
     Route::get('home', 'show')->name('tasks.current');
-    Route::post('home', 'store')->name('tasks.save');
-    Route::get('home/{task}', 'edit')->name('tasks.edit');
-    Route::put('home/{task}', 'update')->name('tasks.update');
-    Route::delete('home/{task}', 'destroy')->name('tasks.delete');
+    Route::post('home/save', 'store')->name('tasks.save');
+    Route::get('home/edit/{task}', 'edit')->name('tasks.edit');
+    Route::put('home/update/{task}', 'update')->name('tasks.update');
+    Route::delete('home/delete/{task}', 'destroy')->name('tasks.delete');
 });
