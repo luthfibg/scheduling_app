@@ -45,6 +45,7 @@ class TaskController extends Controller
         // ]);
 
         // Task::create($request->post());
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'taskname' => 'required|max:255',
         ]);
@@ -96,9 +97,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        // dd($request->all());
         $task = Task::findOrFail($id);
-        $task->name = $request->task_name_edit;
+        $task->name = $request->taskedit;
         $task->save();
         // $task->update([
         //     'name' => $request->edit_task,
