@@ -17,7 +17,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return response(view('home'));
     }
 
     /**
@@ -25,7 +25,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $task)
+    public function create(array $task, Request $request)
     {
         return Task::create($request->all() + [
             'name' => $task['name'],
@@ -41,13 +41,13 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         // dd($request->all());
-        
+
         $validator = Validator::make($request->all(), [
             'taskname' => 'required|max:255',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/home')->withInput()->withErrors($validator);
+            return response(redirect('/home')->withInput()->withErrors($validator));
         }
 
         $task = new Task;
@@ -55,7 +55,7 @@ class TaskController extends Controller
         $request->merge(['name' => $task->name]);
         $task->save();
 
-        return redirect()->intended('home')->with('success', 'Task saved');
+        return response(redirect()->intended('home')->with('success', 'Task saved'));
     }
 
     /**
@@ -68,7 +68,7 @@ class TaskController extends Controller
     {
         $tasks = Task::orderBy('created_at', 'asc')->get();
 
-        return view('home',compact('tasks'));
+        return response(view('home', compact('tasks')));
     }
 
     /**
@@ -79,7 +79,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('modals.edit_task', compact('task'));
+        return response(view('modals.edit_task', compact('task')));
     }
 
     /**
